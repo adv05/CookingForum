@@ -1,10 +1,12 @@
 import fastapi
 import uvicorn
+from sqlmodel import select
 from app.src.database.engine import create_table
 from app.src.api.api import api_router
 from app.src.config import API_STRING, PROJECT_NAME
+# from app.src.config import API_ENDPOINT_HOST, API_ENDPOINT_PORT
 from app.src.models.user import User_DB
-from app.src.database.engine import insert_data
+from app.src.database.engine import insert_data, get_session_for_sqlmodel
 from app.src.common.security import get_password_hash
 
 
@@ -22,16 +24,23 @@ api.include_router(api_router, prefix=API_STRING)  # da togliere
 def on_startup():
     create_table()
 
-    # Insert the admin user
+    # Create the admin user
     admin_user = User_DB(
         username="admin",
         email="admin@cookingforum.com",
         hashed_pw=get_password_hash("dummy"),
         isAdmin=True
     )
-    # AVVIARE SOLO UNA VOLTA, scrivere un check dopo
-    insert_data(admin_user)
-    print("Admin user inserted")
+    # Check if already exists
+    session = get_session_for_sqlmodel()
+    query = select(User_DB).where(User_DB.username == admin_user.username)
+    check_user = session.exec(query).first()
+    if check_user:
+        print("User already exist, not inserted")
+    else:
+        # Insert the admin user
+        insert_data(admin_user)
+        print("Admin user inserted")
 
 
 if __name__ == "__main__":

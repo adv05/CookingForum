@@ -58,3 +58,9 @@ def get_session() -> Generator:
     engine = get_db()
     with Session(engine) as session:
         yield session
+
+
+def get_session_for_sqlmodel():
+    engine = get_db()
+    session = Session(engine)
+    return session
