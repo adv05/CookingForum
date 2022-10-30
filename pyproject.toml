@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "CookingForum"
+version = "0.1.0"
+description = "Cooking Forum"
+authors = ["Antonio"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.85.1"
+uvicorn = "^0.19.0"
+pytest = "^7.2.0"
+pydantic = "^1.10.2"
+sqlmodel = "^0.0.8"
+# SQLAlchemy = "^1.4.41"
+# asyncpg
+passlib = "^1.7.4"
+bcrypt = "^4.0.1"
+pyramid = "^2.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "5.0.4"

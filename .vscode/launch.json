@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "FastAPI",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": ["app.main:api", "--reload", "--port", "8000"],
+        "env": {
+          "PYTHONPATH": "${cwd}",
+          "API_ENDPOINT_PORT": "8000",
+          "API_ENDPOINT_HOST": "localhost",
+          "APP_VERBOSITY": "DEBUG",
+        }
+      },
+      {
+        "name": "Launch Main",
+        "type": "python",
+        "request": "launch",
+        "program": "app/main.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "env": {
+            "PYTHONPATH": "${cwd}",
+            "VERBOSITY": "DEBUG",
+        }
+      }
+    ]
+  }

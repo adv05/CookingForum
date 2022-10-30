@@ -1,0 +1,20 @@
+{
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "connCF",
+            "database": "CookingForumDB",
+            "username": "admin",
+            "password": "adminpw"
+        }
+    ],
+
+}
