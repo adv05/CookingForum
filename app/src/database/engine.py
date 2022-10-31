@@ -1,5 +1,4 @@
-from sqlmodel import create_engine
-from sqlmodel import SQLModel, Session
+from sqlmodel import create_engine, SQLModel, Session
 from typing import Generator
 from pyramid.config import Configurator
 from src.config import DB_CONFIG
@@ -50,7 +49,7 @@ def insert_data(entry: object) -> bool:
             session.refresh(entry)
         return True
     except Exception as message:
-        print("Unable to create object")
+        print(message, "Unable to create object")
         raise Exception(message)
 
 

@@ -15,13 +15,18 @@ class User_DB(UserBase, table=True):
     username: str = Field(sa_column=Column("username", String, unique=True))
     email: str = Field(sa_column=Column("email", String, unique=True))
     id: Optional[int] = Field(default=None, primary_key=True)
-    hashed_pw: str
+    password: str
+    otp: str = None
+    enabled_2FA: bool = False
     isAdmin: bool = False
 
 
 class UserCreate(UserBase):
-    hashed_pw: str
+    password: str
+    enabled_2FA: bool = False
 
 
 class UserRead(UserBase):
     id: int
+    enabled_2FA: bool
+    isAdmin: bool
