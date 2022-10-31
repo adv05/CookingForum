@@ -4,9 +4,9 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from jose import jwt
-from app.src.config import API_STRING, SECURITY_ACCESS_TOKEN_EXPIRE_MINUTES
-from app.src.config import ENCODING_ALGORITHM, ENCODE_TOKEN_KEY
-from app.src.models.user import User_DB
+from src.config import API_STRING, SECURITY_ACCESS_TOKEN_EXPIRE_MINUTES
+from src.config import ENCODING_ALGORITHM, ENCODE_TOKEN_KEY
+from src.models.user import User_DB
 
 
 reusable_oauth2 = OAuth2PasswordBearer(

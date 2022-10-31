@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.src.api.endpoints import user, login
+from src.api.endpoints import user, login
 
 
 api_router = APIRouter()

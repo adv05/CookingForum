@@ -4,12 +4,12 @@ from typing import Any
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from app.src.common.security import create_access_token
-from app.src.config import SECURITY_ACCESS_TOKEN_EXPIRE_MINUTES
-from app.src.models.token import Token
-from app.src.common.security import reusable_oauth2
-from app.src.database.engine import get_session
-from app.src.common.security import verify_user_by_username
+from src.common.security import create_access_token
+from src.config import SECURITY_ACCESS_TOKEN_EXPIRE_MINUTES
+from src.models.token import Token
+from src.common.security import reusable_oauth2
+from src.database.engine import get_session
+from src.common.security import verify_user_by_username
 
 router = APIRouter()
 

@@ -6,7 +6,7 @@
         "type": "python",
         "request": "launch",
         "module": "uvicorn",
-        "args": ["app.main:api", "--reload", "--port", "8000"],
+        "args": ["main:api", "--reload", "--port", "8000"],
         "env": {
           "PYTHONPATH": "${cwd}",
           "API_ENDPOINT_PORT": "8000",

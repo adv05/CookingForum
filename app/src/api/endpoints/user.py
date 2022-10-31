@@ -2,10 +2,10 @@ from http.client import HTTPException
 from typing import Any
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
-from app.src.models.user import User_DB
-from app.src.database.engine import get_session
-from app.src.common.security import get_password_hash
-from app.src.models.user import UserRead, UserCreate
+from src.models.user import User_DB
+from src.database.engine import get_session
+from src.common.security import get_password_hash
+from src.models.user import UserRead, UserCreate
 
 
 router = APIRouter()
