@@ -14,6 +14,16 @@
             "database": "CookingForumDB",
             "username": "admin",
             "password": "adminpw"
+        },
+        {
+            "previewLimit": 50,
+            "server": "0.0.0.0",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "postgres",
+            "database": "postgres",
+            "username": "postgres",
+            "password": "example"
         }
     ],
 

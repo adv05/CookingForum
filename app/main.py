@@ -4,7 +4,6 @@ from sqlmodel import select
 from src.database.engine import create_table
 from src.api.api import api_router
 from src.config import API_STRING, PROJECT_NAME
-# from src.config import API_ENDPOINT_HOST, API_ENDPOINT_PORT
 from src.models.user import User_DB
 from src.database.engine import insert_data, get_session_for_sqlmodel
 from src.common.security import get_password_hash
@@ -28,7 +27,7 @@ def on_startup():
     admin_user = User_DB(
         username="admin",
         email="admin@cookingforum.com",
-        hashed_pw=get_password_hash("dummy"),
+        password=get_password_hash("dummy"),
         isAdmin=True
     )
     # Check if already exists
@@ -43,6 +42,6 @@ def on_startup():
         print("Admin user inserted")
 
 
+# use host="0.0.0.0 for running in local environment
 if __name__ == "__main__":
-    # uvicorn.run(api, port="8000", host="127.0.0.1")
     uvicorn.run(api, port=8000, host="0.0.0.0")

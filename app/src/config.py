@@ -3,12 +3,8 @@ import secrets
 
 
 # App variables
-API_ENDPOINT_PORT: int = int(os.environ.get("API_ENDPOINT_PORT", 8000))
-API_ENDPOINT_HOST: str = os.environ.get("API_ENDPOINT_HOST", "127.0.0.1")
 API_STRING: str = os.environ.get("API_STRING", "/api/v1")
-
 PROJECT_NAME: str = "CookingForum"
-
 DEBUG_MODE: str = os.environ.get("DEBUG_MODE", "False")
 VERBOSITY: str = os.environ.get("VERBOSITY", "DEBUG")
 
