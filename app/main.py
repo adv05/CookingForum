@@ -1,13 +1,13 @@
 import fastapi
 import uvicorn
 from sqlmodel import select
-from app.src.database.engine import create_table
-from app.src.api.api import api_router
-from app.src.config import API_STRING, PROJECT_NAME
-# from app.src.config import API_ENDPOINT_HOST, API_ENDPOINT_PORT
-from app.src.models.user import User_DB
-from app.src.database.engine import insert_data, get_session_for_sqlmodel
-from app.src.common.security import get_password_hash
+from src.database.engine import create_table
+from src.api.api import api_router
+from src.config import API_STRING, PROJECT_NAME
+# from src.config import API_ENDPOINT_HOST, API_ENDPOINT_PORT
+from src.models.user import User_DB
+from src.database.engine import insert_data, get_session_for_sqlmodel
+from src.common.security import get_password_hash
 
 
 api = fastapi.FastAPI(
@@ -44,4 +44,5 @@ def on_startup():
 
 
 if __name__ == "__main__":
-    uvicorn.run(api, port="8000", host="127.0.0.1")
+    # uvicorn.run(api, port="8000", host="127.0.0.1")
+    uvicorn.run(api, port=8000, host="0.0.0.0")

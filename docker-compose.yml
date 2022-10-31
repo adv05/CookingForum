@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  cf-backend:
+    build:
+      dockerfile: ./Dockerfiles/api.dockerfile
+      context: .
+    container_name: cf-backend
+    env_file:
+      - .env
+    # restart: always
+    environment:
+      DB_NAME: ${APP_DB_NAME}
+      DB_USER: ${APP_DB_USER}
+      DB_PASSWORD: ${APP_DB_PASSWORD}
+      DB_PORT: ${APP_DB_PORT}
+      DB_HOST: ${APP_DB_HOST}
+      API_ENDPOINT_PORT: ${APP_ENDPOINT_PORT}
+      DEBUG_MODE: ${APP_DEBUG_MODE}
+      VERBOSITY: ${APP_VERBOSITY}
+    depends_on:
+      - cf-db
+    ports:
+      - "8000:8000"
+
+  cf-db:
+    image: postgres:15.0
+    container_name: cf-db
+    environment:
+      POSTGRES_PASSWORD: ${APP_POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"

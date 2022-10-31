@@ -2,7 +2,7 @@ from sqlmodel import create_engine
 from sqlmodel import SQLModel, Session
 from typing import Generator
 from pyramid.config import Configurator
-from app.src.config import DB_CONFIG
+from src.config import DB_CONFIG
 
 
 def get_engine():
@@ -22,7 +22,7 @@ def get_db():
     try:
         config = Configurator()
         config.scan(
-            "app.src.models"
+            "src.models"
         )  # Scanning folder to import models
         engine = get_engine()
     except IOError:
