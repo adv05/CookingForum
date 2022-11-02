@@ -22,3 +22,8 @@ pyramid = "^2.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "5.0.4"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]

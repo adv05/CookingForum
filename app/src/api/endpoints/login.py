@@ -57,7 +57,7 @@ def user_login(
     return create_token_response(user_access)
 
 
-@router.post("/otp-verification", response_model=Token)
+@router.post("/otp-verification/", response_model=Token)
 def complete_2FA(one_time_pw: str) -> Any:
     """Insert the code you received via email"""
 
@@ -79,7 +79,6 @@ def complete_2FA(one_time_pw: str) -> Any:
                             detail="Unvalid code")
 
 
-# USARE NEI TEST
 # Validazione token
 @router.get("/read-token")
 def read_token_of_logged_in_user(token: str = Depends(reusable_oauth2)):
