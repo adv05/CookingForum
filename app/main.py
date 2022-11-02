@@ -1,18 +1,19 @@
 import fastapi
 import uvicorn
+from time import sleep
 from sqlmodel import select
 from src.database.engine import create_table
-from src.api.api import api_router
-from src.config import API_STRING, PROJECT_NAME
-from src.models.user import User_DB
 from src.database.engine import insert_data, get_session_for_sqlmodel
+from src.api.api import api_router
+from src.config import API_STRING, PROJECT_NAME, ADMIN_PASSWORD
+from src.models.user import User_DB
 from src.common.security import get_password_hash
 
 
 api = fastapi.FastAPI(
     title=PROJECT_NAME,
     openapi_url=f"{API_STRING}/openapi.json",
-    # con questa linea tutto deve essere autenticato prima
+    # Per richiedere autenticazione
     # dependencies=[Depends(api(token))]
 )
 
@@ -21,13 +22,14 @@ api.include_router(api_router, prefix=API_STRING)  # da togliere
 
 @api.on_event("startup")
 def on_startup():
+    sleep(4)  # Wait for DB to start, increase if fails
     create_table()
 
     # Create the admin user
     admin_user = User_DB(
         username="admin",
         email="admin@cookingforum.com",
-        password=get_password_hash("dummy"),
+        password=get_password_hash(ADMIN_PASSWORD),
         isAdmin=True
     )
     # Check if already exists
@@ -42,6 +44,5 @@ def on_startup():
         print("Admin user inserted")
 
 
-# use host="0.0.0.0 for running in local environment
 if __name__ == "__main__":
     uvicorn.run(api, port=8000, host="0.0.0.0")

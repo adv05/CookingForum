@@ -7,14 +7,15 @@ API_STRING: str = os.environ.get("API_STRING", "/api/v1")
 PROJECT_NAME: str = "CookingForum"
 DEBUG_MODE: str = os.environ.get("DEBUG_MODE", "False")
 VERBOSITY: str = os.environ.get("VERBOSITY", "DEBUG")
+ADMIN_PASSWORD: str = os.environ.get("BE_ADMIN_PASSWORD")
 
 # Database configuration
 DB_CONFIG = {
-    "db_name": os.getenv("DB_NAME", "CookingForumDB"),
-    "db_user": os.getenv("DB_USER", "admin"),
-    "db_password": os.getenv("DB_PASSWORD", "adminpw"),
+    "db_name": os.getenv("DB_NAME", "postgres"),
+    "db_user": os.getenv("DB_USER", "postgres"),
+    "db_password": os.getenv("DB_PASSWORD", "example"),
     "db_port": os.getenv("DB_PORT", "5432"),
-    "db_host": os.getenv("DB_HOST", "localhost"),
+    "db_host": os.getenv("DB_HOST", "0.0.0.0"),
 }
 
 # Application Path
